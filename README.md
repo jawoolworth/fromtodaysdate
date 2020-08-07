@@ -9,8 +9,8 @@ Bellow the current date will be a list of intervals with associated dates in the
   * This will calculate as intervals of 7 days.
 * Months
   * This will calculate as the day of month in the subsequent month.
-    * For months where the calculated day is greater than days in the given month, the date will be moved back to the last day of the month.  If the last day of the month is not a working day, the reported day will be the next court date.
-      * For example, calculating out one month from January 31 will result in February 28 in non-leap years.  If February 28 falls on a Saturday, then Friday, February 27 will be the resulting date.
+    * For months where the calculated day is greater than days in the given month, the days in excess of the total days in the month will be added to the last day.
+      * For example, calculating out one month from January 31 will result in March 3 in non-leap years, assuming March 3 falls on a work day.
 * Years
   This will increment the year.
 * Court Days
