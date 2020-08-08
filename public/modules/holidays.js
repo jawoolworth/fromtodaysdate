@@ -45,12 +45,14 @@ function HolidayRule(rule) {
 }
 
 function dateSpecificRule(month, date) {
-    if (typeof month === 'number' && month >= 0 && month < 12) {
+    // if (typeof month === 'number' && month >= 0 && month < 12) {
+    if (!Number.isNaN(month) && month >= 0 && month < 12) {
         this.month = month;
     } else {
         this.month = null;
     }
-    if (typeof date === 'number' && date >= 1 && date < 31) {
+    // if (typeof date === 'number' && date >= 1 && date < 31) {
+    if (!Number.isNaN(date) && date >= 1 && date < 31) {
         if (month === 1 && date > 29 ) {
             this.date = null;
         } else if (date > 30 && month === 3 || month === 5 || month === 8 || month === 10) {
@@ -98,18 +100,20 @@ function createDateSpecificHoliday(dateSpecificRule, year) {
 }
 
 function createWeekdaySpecificHoliday(rule, year) {
-    // if (rule.month === null || rule.dayOfWeek === null || rule.weekOfMonth === null || rule.date !==null) {
-    //     return -1;
-    // }
-
     // if we get here, the rule should be valid
     let calculatedDate = new Date(year, rule.month, 1);
+    // console.log("\ncalculatedDate");
+    // console.log(calculatedDate);
     let firstWeekDayOfMonth = calculatedDate.getDay();
     let dayOfWeekDifference = rule.dayOfWeek - firstWeekDayOfMonth;
+    // console.log("\ndayOfWeekDifference");
+    // console.log(dayOfWeekDifference);
     if (dayOfWeekDifference >= 0 ) {
         calculatedDate = new Date(year, rule.month, calculatedDate.getDate() + dayOfWeekDifference);
     } else {
         calculatedDate = new Date(year, rule.month, calculatedDate.getDate() + (dayOfWeekDifference + 7));
+        // console.log("\n in if else statement: calculatedDate");
+        // console.log(calculatedDate);
     }
     // if we get here, the calculated date is already the first instance of the target weekday
     // to get to target week, we need week of month less 1, and multiply that by days in week
@@ -120,14 +124,19 @@ function createWeekdaySpecificHoliday(rule, year) {
 }
 
 function createHoliday(rule, year) {
-    console.log("did we make it to createHoliday()");
-    console.log(rule);
-    console.log(rule.month !== null);
-    console.log(rule.date !== null);
-    if (rule.hasOwnProperty(rule.month) && rule.month !== null && rule.hasOwnProperty(rule.date) && rule.date !== null) {
+    // console.log("Just inside createHoliday()");
+    // console.log("\nrule");
+    // console.log(rule);
+    // console.log("\nrule.month !== null");
+    // console.log(rule.month !== null);
+    // console.log("\nrule.hasOwnProperty('month')");
+    // console.log(rule.hasOwnProperty('month'));
+    // console.log("\nrule.hasOwnProperty('date')");
+    // console.log(rule.hasOwnProperty('date'));
+    if (rule.hasOwnProperty('month') && rule.month !== null && rule.hasOwnProperty('date') && rule.date !== null) {
         return createDateSpecificHoliday(rule, year);
     } else if (rule.month !== null && rule.dayOfWeek !== null && rule.weekOfMonth !== null) {
-        console.log("are we here?");
+        // console.log("are we in the else if portion of createHoliday()?");
         return createWeekdaySpecificHoliday(rule, year);
     } else {
         return -1;
