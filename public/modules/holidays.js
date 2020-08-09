@@ -1,4 +1,4 @@
-// const dateHelper = require('./dateFunctions');
+const dateUtils = require('./dateFunctions');
 // New Year's Day 			- 	January 1
 // Martin Luther King Day	-	3rd Monday in January
 // Lincoln's Birthday		-	February 12
@@ -152,13 +152,20 @@ function createHoliday(rule, year) {
     // console.log("\nrule.hasOwnProperty('date')");
     // console.log(rule.hasOwnProperty('date'));
     if (rule.hasOwnProperty('month') && rule.month !== null && rule.hasOwnProperty('date') && rule.date !== null) {
-        return createDateSpecificHoliday(rule, year);
+        return adjustHolidayForWeekend( createDateSpecificHoliday(rule, year) );
     } else if (rule.month !== null && rule.dayOfWeek !== null && rule.weekOfMonth !== null) {
-        // console.log("are we in the else if portion of createHoliday()?");
-        return createWeekdaySpecificHoliday(rule, year);
+        return adjustHolidayForWeekend( createWeekdaySpecificHoliday(rule, year) );
     } else {
         return -1;
     }
+}
+
+function adjustHolidayForWeekend(date) {
+    let newHoliday = new Date(date);
+        while (dateUtils.isWeekend(newHoliday)) {
+            newHoliday = dateUtils.addDays(newHoliday, 1);
+        }
+        return newHoliday;
 }
 
 module.exports = { createHoliday, HolidayRule, dateSpecificRule, weekdaySpecificRule };
