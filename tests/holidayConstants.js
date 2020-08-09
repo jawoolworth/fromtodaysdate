@@ -1,3 +1,5 @@
+const Holiday = require('../public/modules/holidays');
+
 const newYearsDays = [
     new Date(2020,0,1),
     new Date(2021,0,1),
@@ -7,7 +9,7 @@ const newYearsDays = [
     new Date(2025,0,1),
     new Date(2026,0,1),
     new Date(2027,0,1),
-    new Date(2027,12,31),
+    new Date(2027,11,31),
     new Date(2029,0,1),
     new Date(2030,0,1)
 ];
@@ -179,3 +181,50 @@ const christmasDays = [
     new Date(2029,11,25),
     new Date(2030,11,25)
 ];
+
+// New Year's Day 			- 	January 1
+// Martin Luther King Day	-	3rd Monday in January
+// Lincoln's Birthday		-	February 12
+// President's Day			-	3rd Monday in February
+// Cesar Chavez Day	    	-	March 31
+// Memorial Day			    -	Last Monday in May
+// Independence Day		    -	July 4
+// Labor Day				-	1st Monday in September
+// Columbus Day             -   2nd Monday in October
+// Veteran's Day			-	November 11
+// Thanksgiving Day		    -	4th Thursday in November
+// Day after Thanksgiving	- 	Thanksgiving plus 1
+// Christmas Day			-	December 25
+
+const newYearsDayRule = new Holiday.dateSpecificRule(0, 1);
+const mlkDayRule = new Holiday.weekdaySpecificRule(0, 1, 3, null);
+const lincolnDayRule = new Holiday.dateSpecificRule(1, 12);
+const presidentDayRule = new Holiday.weekdaySpecificRule(1, 1, 3, null);
+const chavezDayRule = new Holiday.dateSpecificRule(2, 31);
+const memorialDayRule = new Holiday.weekdaySpecificRule(4, 1, 6, null);
+const independenceDayRule = new Holiday.dateSpecificRule(6, 4);
+const laborDayRule = new Holiday.weekdaySpecificRule(8, 1, 1, null);
+const columbusDayRule = new Holiday.weekdaySpecificRule(9, 1, 2, null);
+const veteransDayRule = new Holiday.dateSpecificRule(10, 11);
+const thanksgivingDayRule = new Holiday.weekdaySpecificRule(10, 4, 4, null);
+const dayAfterThanksgivingDayRule = new Holiday.weekdaySpecificRule(10, 4, 4, 1);
+const christmasDayRule = new Holiday.dateSpecificRule(11, 25);
+
+let holidays = [
+    newYearsDayRule,
+    mlkDayRule,
+    lincolnDayRule,
+    presidentDayRule,
+    chavezDayRule,
+    memorialDayRule,
+    independenceDayRule,
+    laborDayRule,
+    columbusDayRule,
+    veteransDayRule,
+    thanksgivingDayRule,
+    dayAfterThanksgivingDayRule,
+    christmasDayRule
+]
+
+module.exports = { holidays, newYearsDays, mlkDays, lincolnDays, presidentsDays, cesarChavezDays, memorialDays, 
+                 independenceDays, laborDays, columbusDays, veteransDays, thanksgivingDays, dayAfterThanksgivingDays, christmasDays };

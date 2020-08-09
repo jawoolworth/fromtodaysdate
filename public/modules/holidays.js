@@ -7,6 +7,7 @@ const dateUtils = require('./dateFunctions');
 // Memorial Day			    -	Last Monday in May
 // Independence Day		    -	July 4
 // Labor Day				-	1st Monday in September
+// Columbus Day             -   2nd Monday in October
 // Veteran's Day			-	November 11
 // Thanksgiving Day		    -	4th Thursday in November
 // Day after Thanksgiving	- 	Thanksgiving plus 1
@@ -51,10 +52,10 @@ function dateSpecificRule(month, date) {
         this.month = null;
     }
 
-    if (!Number.isNaN(date) && date >= 1 && date < 31) {
+    if (!Number.isNaN(date) && date >= 1 && date <= 31) {
         if (month === 1 && date > 29 ) {
             this.date = null;
-        } else if (date > 30 && month === 3 || month === 5 || month === 8 || month === 10) {
+        } else if (date > 30 && (month === 3 || month === 5 || month === 8 || month === 10)) {
             this.date = null;
         } else {
             this.date = date;
