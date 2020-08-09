@@ -1,4 +1,4 @@
-const dateHelper = require('./dateFunctions');
+// const dateHelper = require('./dateFunctions');
 // New Year's Day 			- 	January 1
 // Martin Luther King Day	-	3rd Monday in January
 // Lincoln's Birthday		-	February 12
@@ -66,25 +66,29 @@ function dateSpecificRule(month, date) {
 }
 
 function weekdaySpecificRule(month, dayOfWeek, weekOfMonth, plusDays) {
-    if (typeof month === 'number' && month >= 0 && month < 12) {
+    // if (typeof month === 'number' && month >= 0 && month < 12) {
+    if (!Number.isNaN(month) && month >= 0 && month < 12) {
         this.month = month;
     } else {
         this.month = null;
     }
 
-    if (typeof dayOfWeek === 'number' && dayOfWeek >= 0 && dayOfWeek < 7) {
+    // if (typeof dayOfWeek === 'number' && dayOfWeek >= 0 && dayOfWeek < 7) {
+    if (!Number.isNaN(dayOfWeek) && dayOfWeek >= 0 && dayOfWeek < 7) {
         this.dayOfWeek = dayOfWeek;
     } else {
         this.dayOfWeek = null;
     }
 
-    if (typeof weekOfMonth === 'number' && weekOfMonth >= 1 && weekOfMonth < 7 ) {
+    // if (typeof weekOfMonth === 'number' && weekOfMonth >= 1 && weekOfMonth < 7 ) {
+    if (!Number.isNaN(weekOfMonth) && weekOfMonth >= 1 && weekOfMonth < 7 ) {
         this.weekOfMonth = weekOfMonth;
     } else {
         this.weekOfMonth = null;
     }
 
-    if (typeof plusDays === 'number' && plusDays >= 0 && plusDays < 30) {
+    // if (typeof plusDays === 'number' && plusDays >= 0 && plusDays < 30) {
+    if (!Number.isNaN(plusDays) && plusDays >= 0 && plusDays < 30) {
         this.plusDays = plusDays;
     } else {
         this.plusDays = null;
@@ -101,19 +105,33 @@ function createDateSpecificHoliday(dateSpecificRule, year) {
 
 function createWeekdaySpecificHoliday(rule, year) {
     // if we get here, the rule should be valid
+    if (rule.weekOfMonth > 5) {
+        return findLastWeekday(rule, year);
+    } else {
+        return findOtherWeekday(rule, year);
+    }
+}
+
+function findLastWeekday(rule, year) {
+    let lastDayOfMonth = new Date(year, rule.month + 1, 0);
+    let lastWeekdayOfMonth = lastDayOfMonth.getDay();
+    if (rule.dayOfWeek > lastWeekdayOfMonth) {
+        return new Date(year, rule.month + 1, 0 - (7 - rule.dayOfWeek));
+    } else if (rule.dayOfWeek < lastWeekdayOfMonth) {
+        return new Date(year, rule.month + 1, 0 + (rule.dayOfWeek - lastWeekdayOfMonth));
+    } else {
+        return new Date(lastDayOfMonth);
+    }
+}
+
+function findOtherWeekday(rule, year) {
     let calculatedDate = new Date(year, rule.month, 1);
-    // console.log("\ncalculatedDate");
-    // console.log(calculatedDate);
     let firstWeekDayOfMonth = calculatedDate.getDay();
     let dayOfWeekDifference = rule.dayOfWeek - firstWeekDayOfMonth;
-    // console.log("\ndayOfWeekDifference");
-    // console.log(dayOfWeekDifference);
     if (dayOfWeekDifference >= 0 ) {
         calculatedDate = new Date(year, rule.month, calculatedDate.getDate() + dayOfWeekDifference);
     } else {
         calculatedDate = new Date(year, rule.month, calculatedDate.getDate() + (dayOfWeekDifference + 7));
-        // console.log("\n in if else statement: calculatedDate");
-        // console.log(calculatedDate);
     }
     // if we get here, the calculated date is already the first instance of the target weekday
     // to get to target week, we need week of month less 1, and multiply that by days in week
