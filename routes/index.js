@@ -1,15 +1,30 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const dateUtils = require('../public/modules/dateFunctions');
+const holidayUtils = require('../public/modules/holidays');
+const HOLIDAYS = require('../tests/holidayConstants');
 
 
+const year = new Date(Date.now()).getFullYear();
+const holidayDates = [];
+const holidayRules = HOLIDAYS.holidayRules;
+
+for (let i = 0; i < 4; i++) {
+  for (let j = 0; j < holidayRules.length; j++) {
+    holidayDates.push(holidayUtils.createHoliday(holidayRules[j], year + i));
+  }
+}
+
+console.log(holidayDates);
 
 //======================================================
 //                  Routes
 //======================================================
 // root route
 router.get("/", function(req, res) {
-  res.render("index");
+  const today = dateUtils.dateFormatter(new Date(Date.now()));
+  res.render("index", {today: today});
 });
 
 //=================================

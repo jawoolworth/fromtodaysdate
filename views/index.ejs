@@ -1,1 +1,111 @@
-<h1>This is index.ejs</h1>
+<%- include('partials/header', {today: today} ); %>
+
+<h1 id="today" class="container-fluid text-center"><%= today %> </h1>
+
+<div id="mainContainer" class="container">
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Week
+            </button>
+            </h2>
+        </div>
+    
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <!-- <div class="card-body"> -->
+            <table class="table table-hover table-sm table.borderless myTable">
+              <tbody>
+                <tr>
+                  <td class="periodData" >Week</td>
+                  <td>Date</td>
+                </tr>
+                <tr>
+                  <td class="periodData" >Week</td>
+                  <td>Date</td>
+                </tr>
+                <tr>
+                  <td class="periodData" >Week</td>
+                  <td>Date</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- <div class="row">
+              <div class="col-sm">
+                <div class="card-body justify-content-end">
+                  week
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="card-body"></div>
+              </div>
+              <div class="col-sm">
+                <div class="card-body">
+                  date
+                </div>
+              </div>
+            </div>               -->
+          <!-- </div> -->
+        </div>
+        </div>
+        <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Month
+            </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+            [EJS SCRIPT TO ADD MONTH DATES]
+            </div>
+        </div>
+        </div>
+        <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Year
+            </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+            [EJS SCRIPT TO ADD YEAR DATES]
+            </div>
+        </div>
+        </div>
+        <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                Days
+            </button>
+            </h2>
+        </div>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+            [EJS SCRIPT TO ADD DAYS DATES]
+            </div>
+        </div>
+        </div>
+        <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                Court Days
+            </button>
+            </h2>
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+            <div class="card-body">
+            [EJS SCRIPT TO ADD COURT DAYS DATES]
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer'); %> 

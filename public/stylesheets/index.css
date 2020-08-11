@@ -1,0 +1,19 @@
+#mainContainer {
+    
+}
+
+#today {
+    margin-top: 20px;
+}
+
+.dateField{
+    float: right;
+}
+
+.myTable{
+    margin-bottom: 0px;
+}
+
+td.periodData{
+    padding-left: 5rem;
+}
