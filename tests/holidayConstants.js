@@ -210,7 +210,7 @@ const thanksgivingDayRule = new Holiday.weekdaySpecificRule(10, 4, 4, null);
 const dayAfterThanksgivingDayRule = new Holiday.weekdaySpecificRule(10, 4, 4, 1);
 const christmasDayRule = new Holiday.dateSpecificRule(11, 25);
 
-let holidays = [
+let holidayRules = [
     newYearsDayRule,
     mlkDayRule,
     lincolnDayRule,
@@ -226,5 +226,5 @@ let holidays = [
     christmasDayRule
 ]
 
-module.exports = { holidays, newYearsDays, mlkDays, lincolnDays, presidentsDays, cesarChavezDays, memorialDays, 
+module.exports = { holidayRules, newYearsDays, mlkDays, lincolnDays, presidentsDays, cesarChavezDays, memorialDays, 
                  independenceDays, laborDays, columbusDays, veteransDays, thanksgivingDays, dayAfterThanksgivingDays, christmasDays };
