@@ -1,3 +1,7 @@
+#exclude specific files
+play.js
+AlexanderCourtCalendar.txt
+
 # Logs
 logs
 *.log

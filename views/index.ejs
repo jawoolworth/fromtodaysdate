@@ -5,49 +5,26 @@
 <div id="mainContainer" class="container">
     <div class="accordion" id="accordionExample">
         <div class="card">
-        <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Week
-            </button>
-            </h2>
-        </div>
-    
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <!-- <div class="card-body"> -->
-            <table class="table table-hover table-sm table.borderless myTable">
-              <tbody>
-                <tr>
-                  <td class="periodData" >Week</td>
-                  <td>Date</td>
-                </tr>
-                <tr>
-                  <td class="periodData" >Week</td>
-                  <td>Date</td>
-                </tr>
-                <tr>
-                  <td class="periodData" >Week</td>
-                  <td>Date</td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- <div class="row">
-              <div class="col-sm">
-                <div class="card-body justify-content-end">
-                  week
-                </div>
-              </div>
-              <div class="col-sm">
-                <div class="card-body"></div>
-              </div>
-              <div class="col-sm">
-                <div class="card-body">
-                  date
-                </div>
-              </div>
-            </div>               -->
-          <!-- </div> -->
-        </div>
+          <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Week
+              </button>
+              </h2>
+          </div>
+      
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <table class="table table-hover table-sm table.borderless myTable">
+                <tbody>
+                  <% weeks.forEach(week => { %>
+                    <tr>
+                      <td class="periodData" ><%= week.name %></td>
+                      <td><%= week.date %> </td>
+                    </tr>  
+                  <% }); %> 
+                </tbody>
+              </table>
+          </div>
         </div>
         <div class="card">
         <div class="card-header" id="headingTwo">
@@ -58,10 +35,17 @@
             </h2>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body">
-            [EJS SCRIPT TO ADD MONTH DATES]
-            </div>
-        </div>
+          <table class="table table-hover table-sm table.borderless myTable">
+            <tbody>
+              <% months.forEach(month => { %>
+                <tr>
+                  <td class="periodData" ><%= month.name %></td>
+                  <td><%= month.date %> </td>
+                </tr>  
+              <% }); %> 
+            </tbody>
+          </table>
+    </div>
         </div>
         <div class="card">
         <div class="card-header" id="headingThree">
@@ -72,9 +56,16 @@
             </h2>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            <div class="card-body">
-            [EJS SCRIPT TO ADD YEAR DATES]
-            </div>
+          <table class="table table-hover table-sm table.borderless myTable">
+            <tbody>
+              <% years.forEach(year => { %>
+                <tr>
+                  <td class="periodData" ><%= year.name %></td>
+                  <td><%= year.date %> </td>
+                </tr>  
+              <% }); %> 
+            </tbody>
+          </table>
         </div>
         </div>
         <div class="card">
@@ -86,9 +77,16 @@
             </h2>
         </div>
         <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            <div class="card-body">
-            [EJS SCRIPT TO ADD DAYS DATES]
-            </div>
+          <table class="table table-hover table-sm table.borderless myTable">
+            <tbody>
+              <% days.forEach(day => { %>
+                <tr>
+                  <td class="periodData" ><%= day.name %></td>
+                  <td><%= day.date %> </td>
+                </tr>  
+              <% }); %> 
+            </tbody>
+          </table>
         </div>
         </div>
         <div class="card">
@@ -100,9 +98,16 @@
             </h2>
         </div>
         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-            <div class="card-body">
-            [EJS SCRIPT TO ADD COURT DAYS DATES]
-            </div>
+          <table class="table table-hover table-sm table.borderless myTable">
+            <tbody>
+              <% courtDays.forEach(courtDay => { %>
+                <tr>
+                  <td class="periodData" ><%= courtDay.name %></td>
+                  <td><%= courtDay.date %> </td>
+                </tr>  
+              <% }); %> 
+            </tbody>
+          </table>
         </div>
         </div>
     </div>

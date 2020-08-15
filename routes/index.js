@@ -1,30 +1,27 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const dateUtils = require('../public/modules/dateFunctions');
-const holidayUtils = require('../public/modules/holidays');
-const HOLIDAYS = require('../tests/holidayConstants');
-
-
-const year = new Date(Date.now()).getFullYear();
-const holidayDates = [];
-const holidayRules = HOLIDAYS.holidayRules;
-
-for (let i = 0; i < 4; i++) {
-  for (let j = 0; j < holidayRules.length; j++) {
-    holidayDates.push(holidayUtils.createHoliday(holidayRules[j], year + i));
-  }
-}
-
-console.log(holidayDates);
-
+const { addCourtDays, addDays, addWeeks, addMonths, addYears, isWeekend, dateFormatter, WEEKEND, daysOfWeek, months } = require('../public/modules/utils/dateUtils');
+const { createHoliday, HolidayRule, dateSpecificRule, weekdaySpecificRule, createHolidays } = require('../public/modules/utils/holidayUtils');
+const { newYearsDays, mlkDays, lincolnDays, presidentsDays, cesarChavezDays, memorialDays, 
+  independenceDays, laborDays, columbusDays, veteransDays, thanksgivingDays, dayAfterThanksgivingDays, christmasDays } = require('../public/modules/dates/holidayConstants');
+const { futureDateRule, PERIOD, createFutureDatesArray } = require('../public/modules/utils/futureDateUtils');
+const { holidayRules } = require('../public/modules/rules/holidayRules');
+const { weekRules, monthRules, yearRules, dayRules, courtDayRules } = require('../public/modules/rules/futureDateRules');
 //======================================================
 //                  Routes
 //======================================================
 // root route
 router.get("/", function(req, res) {
-  const today = dateUtils.dateFormatter(new Date(Date.now()));
-  res.render("index", {today: today});
+  const todayformatted = dateFormatter(new Date(Date.now()));
+  const today = new Date(Date.now());
+  const holidays = createHolidays(holidayRules, today.getFullYear());
+  const weeks = createFutureDatesArray(today, weekRules, holidays);
+  const months = createFutureDatesArray(today, monthRules, holidays);
+  const years = createFutureDatesArray(today, yearRules, holidays);
+  const days = createFutureDatesArray(today, dayRules, holidays);
+  const courtDays = createFutureDatesArray(today, courtDayRules, holidays);
+  res.render("index", {today: todayformatted, weeks: weeks, months: months, years: years, days: days, courtDays: courtDays});
 });
 
 //=================================

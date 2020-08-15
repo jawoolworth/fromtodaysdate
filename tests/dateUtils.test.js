@@ -1,4 +1,4 @@
-const dateHelper = require('../public/modules/dateFunctions.js');
+const dateHelper = require('../public/modules/utils/dateUtils');
 
 let date = new Date(2020,6,30);
 

@@ -7,9 +7,10 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const methodOverride = require("method-override");
 const flash = require("connect-flash");
-const dateUtils = require('./public/modules/dateFunctions');
-const holidayUtils = require('./public/modules/holidays');
-const HOLIDAYS = require('./tests/holidayConstants');
+const { addCourtDays, addDays, addWeeks, addMonths, addYears, isWeekend, dateFormatter, WEEKEND, daysOfWeek, months } = require('./public/modules/utils/dateUtils');
+const { createHoliday, HolidayRule, dateSpecificRule, weekdaySpecificRule, createHolidays } = require('./public/modules/utils/holidayUtils');
+const { newYearsDays, mlkDays, lincolnDays, presidentsDays, cesarChavezDays, memorialDays, 
+  independenceDays, laborDays, columbusDays, veteransDays, thanksgivingDays, dayAfterThanksgivingDays, christmasDays } = require('./public/modules/dates/holidayConstants');
 
 // requiring routes
 const indexRoutes = require("./routes/index");

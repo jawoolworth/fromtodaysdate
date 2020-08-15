@@ -1,4 +1,4 @@
-const Holiday = require('../public/modules/holidays');
+const Holiday = require('../utils/holidayUtils');
 
 const newYearsDays = [
     new Date(2020,0,1),
@@ -196,35 +196,5 @@ const christmasDays = [
 // Day after Thanksgiving	- 	Thanksgiving plus 1
 // Christmas Day			-	December 25
 
-const newYearsDayRule = new Holiday.dateSpecificRule(0, 1);
-const mlkDayRule = new Holiday.weekdaySpecificRule(0, 1, 3, null);
-const lincolnDayRule = new Holiday.dateSpecificRule(1, 12);
-const presidentDayRule = new Holiday.weekdaySpecificRule(1, 1, 3, null);
-const chavezDayRule = new Holiday.dateSpecificRule(2, 31);
-const memorialDayRule = new Holiday.weekdaySpecificRule(4, 1, 6, null);
-const independenceDayRule = new Holiday.dateSpecificRule(6, 4);
-const laborDayRule = new Holiday.weekdaySpecificRule(8, 1, 1, null);
-const columbusDayRule = new Holiday.weekdaySpecificRule(9, 1, 2, null);
-const veteransDayRule = new Holiday.dateSpecificRule(10, 11);
-const thanksgivingDayRule = new Holiday.weekdaySpecificRule(10, 4, 4, null);
-const dayAfterThanksgivingDayRule = new Holiday.weekdaySpecificRule(10, 4, 4, 1);
-const christmasDayRule = new Holiday.dateSpecificRule(11, 25);
-
-let holidayRules = [
-    newYearsDayRule,
-    mlkDayRule,
-    lincolnDayRule,
-    presidentDayRule,
-    chavezDayRule,
-    memorialDayRule,
-    independenceDayRule,
-    laborDayRule,
-    columbusDayRule,
-    veteransDayRule,
-    thanksgivingDayRule,
-    dayAfterThanksgivingDayRule,
-    christmasDayRule
-]
-
-module.exports = { holidayRules, newYearsDays, mlkDays, lincolnDays, presidentsDays, cesarChavezDays, memorialDays, 
+module.exports = { newYearsDays, mlkDays, lincolnDays, presidentsDays, cesarChavezDays, memorialDays, 
                  independenceDays, laborDays, columbusDays, veteransDays, thanksgivingDays, dayAfterThanksgivingDays, christmasDays };

@@ -1,4 +1,6 @@
-const dateUtils = require('./dateFunctions');
+const dateUtils = require('./dateUtils');
+const holidayConstants = require('../dates/holidayConstants');
+// const { holidayRules } = require('../rules/holidayRules');
 // New Year's Day 			- 	January 1
 // Martin Luther King Day	-	3rd Monday in January
 // Lincoln's Birthday		-	February 12
@@ -144,15 +146,27 @@ function createHoliday(rule, year) {
 }
 
 function adjustHolidayForWeekend(date) {
-    let newHoliday = new Date(date);
-        while (dateUtils.isWeekend(newHoliday)) {
-            if (newHoliday.getDay() === 0) {
-                newHoliday = dateUtils.addDays(newHoliday, 1);
-            } else {
-                newHoliday = dateUtils.addDays(newHoliday, -1);
-            }
-        }
-        return newHoliday;
+  let newHoliday = new Date(date);
+  while (dateUtils.isWeekend(newHoliday)) {
+    if (newHoliday.getDay() === 0) {
+        newHoliday = dateUtils.addDays(newHoliday, 1);
+    } else {
+        newHoliday = dateUtils.addDays(newHoliday, -1);
+    }
+  }
+  return newHoliday;
 }
 
-module.exports = { createHoliday, HolidayRule, dateSpecificRule, weekdaySpecificRule };
+function createHolidays(holidayRules, year) {
+  const holidayDates = [];
+
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < holidayRules.length; j++) {
+      holidayDates.push(createHoliday(holidayRules[j], year + i));
+    }
+  }
+
+  return holidayDates;
+}
+
+module.exports = { createHoliday, HolidayRule, dateSpecificRule, weekdaySpecificRule, createHolidays };
