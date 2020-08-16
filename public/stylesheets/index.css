@@ -14,11 +14,19 @@
     margin-bottom: 0px;
 }
 
-td.periodData{
-    padding-left: 5rem;
+/* td.periodData{
+    padding-left: 2.5rem;
+} */
+
+td {
+    text-align: center;
 }
 
 p.signature {
     margin-top: 100px;
     opacity: 50%;
+}
+
+div.card-header {
+    padding: 0px;
 }
