@@ -17,3 +17,8 @@
 td.periodData{
     padding-left: 5rem;
 }
+
+p.signature {
+    margin-top: 100px;
+    opacity: 50%;
+}

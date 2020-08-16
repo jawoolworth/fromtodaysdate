@@ -17,8 +17,8 @@ const indexRoutes = require("./routes/index");
     //   commentRoutes = require("./routes/comments"),
     //   campgroundRoutes = require("./routes/campgrounds");
 
-const URL = process.env.DATABASEURL || "mongodb://localhost/workday";
-mongoose.connect(URL, { useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false });
+// const URL = process.env.DATABASEURL || "mongodb://localhost/workday";
+// mongoose.connect(URL, { useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false });
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));  
 // colt's code is: app.use(express.static(__dirname + "/public"));
