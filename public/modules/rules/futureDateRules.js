@@ -1,4 +1,4 @@
-const { futureDateRule, PERIOD } = require('../utils/futureDateUtils');
+const { futureDateRule, PERIOD } = require("../utils/futureDateUtils");
 
 const oneWeeks = new futureDateRule(PERIOD.weeks, 1);
 const twoWeeks = new futureDateRule(PERIOD.weeks, 2);

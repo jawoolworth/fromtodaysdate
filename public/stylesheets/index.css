@@ -1,32 +1,28 @@
 #mainContainer {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 #today {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-.dateField{
-    float: right;
+.dateField {
+  float: right;
 }
 
-.myTable{
-    margin-bottom: 0px;
+.myTable {
+  margin-bottom: 0px;
 }
-
-/* td.periodData{
-    padding-left: 2.5rem;
-} */
 
 td {
-    text-align: center;
+  text-align: center;
 }
 
 p.signature {
-    margin-top: 100px;
-    opacity: 50%;
+  margin-top: 100px;
+  opacity: 50%;
 }
 
 div.card-header {
-    padding: 0px;
+  padding: 0px;
 }

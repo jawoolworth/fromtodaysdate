@@ -1,4 +1,7 @@
-const { dateSpecificRule, weekdaySpecificRule } = require('../utils/holidayUtils');
+const {
+  dateSpecificRule,
+  weekdaySpecificRule,
+} = require("../utils/holidayUtils");
 
 const newYearsDayRule = new dateSpecificRule(0, 1);
 const mlkDayRule = new weekdaySpecificRule(0, 1, 3, null);
@@ -15,19 +18,19 @@ const dayAfterThanksgivingDayRule = new weekdaySpecificRule(10, 4, 4, 1);
 const christmasDayRule = new dateSpecificRule(11, 25);
 
 let holidayRules = [
-    newYearsDayRule,
-    mlkDayRule,
-    lincolnDayRule,
-    presidentDayRule,
-    chavezDayRule,
-    memorialDayRule,
-    independenceDayRule,
-    laborDayRule,
-    columbusDayRule,
-    veteransDayRule,
-    thanksgivingDayRule,
-    dayAfterThanksgivingDayRule,
-    christmasDayRule
-]
+  newYearsDayRule,
+  mlkDayRule,
+  lincolnDayRule,
+  presidentDayRule,
+  chavezDayRule,
+  memorialDayRule,
+  independenceDayRule,
+  laborDayRule,
+  columbusDayRule,
+  veteransDayRule,
+  thanksgivingDayRule,
+  dayAfterThanksgivingDayRule,
+  christmasDayRule,
+];
 
 module.exports = { holidayRules };
