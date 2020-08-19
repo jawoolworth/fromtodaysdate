@@ -59,9 +59,9 @@ function futureDateRule(period, numberOfPeriods) {
       break;
     case 5:
       if (numberOfPeriods > 1) {
-        this.name = numberOfPeriods + " court days";
+        this.name = numberOfPeriods + " business days";
       } else {
-        this.name = numberOfPeriods + " court day";
+        this.name = numberOfPeriods + " business day";
       }
       break;
     default:
