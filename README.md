@@ -14,8 +14,8 @@ Bellow the current date will be a list of intervals with associated dates in the
       - For example, calculating out one month from January 31 will result in March 3 in non-leap years, assuming March 3 falls on a work day.
 - Years
   This will increment the year.
-- Court Days
-  This will only count court days to get to the desired date.
+- Business Days
+  This will only count business days to get to the desired date. Business days exclude weekends and holidays.
 
 If the calculated date falls on a weekend or holiday, then the reported date will be the next court date.
 
