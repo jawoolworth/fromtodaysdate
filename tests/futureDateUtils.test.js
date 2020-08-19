@@ -239,9 +239,6 @@ describe("futureDateUtils tests", () => {
       holidays.forEach((holiday) => {
         if (futureDate.date === dateFormatter(holiday)) {
           futureDateIsHoliday = true;
-          // console.log("futureDate.date = " + futureDate.date);
-          // console.log("holiday = " + dateFormatter(holiday));
-          // console.log(futureDate.date === dateFormatter(holiday));
         }
       });
     });

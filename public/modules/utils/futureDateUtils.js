@@ -72,44 +72,12 @@ function futureDateRule(period, numberOfPeriods) {
 function isDateHoliday(date, holidays) {
   let isHoliday = false;
 
-  // if (
-  //   dateFormatter(date) === "Monday, February 15, 2021" ||
-  //   dateFormatter(date) === "Monday, September 7, 2020"
-  // ) {
-  //   console.log("\nin isDateHoliday");
-  //   console.log("date: " + dateFormatter(date));
-  //   console.log("holidays");
-  //   console.log(holidays);
-  // }
-
   holidays.forEach((holiday) => {
-    // if (
-    //   (dateFormatter(holiday) === "Monday, February 15, 2021" ||
-    //     dateFormatter(holiday) === "Monday, September 7, 2020") &&
-    //   (dateFormatter(date) === "Monday, February 15, 2021" ||
-    //     dateFormatter(date) === "Monday, September 7, 2020")
-    // ) {
-    //   // console.log("\nin isDateHoliday");
-    //   console.log("\ndate: " + dateFormatter(date));
-    //   console.log("holiday: " + dateFormatter(holiday));
-    //   console.log(dateFormatter(date) === dateFormatter(holiday));
-    //   // console.log(holidays);
-    // }
     if (dateFormatter(date) === dateFormatter(holiday)) {
-      // console.log("\nIn If statement");
-      // console.log("date: " + dateFormatter(date));
-      // console.log("holiday: " + dateFormatter(holiday));
       isHoliday = true;
     }
   });
 
-  // if (
-  //   dateFormatter(date) === "Monday, February 15, 2021" ||
-  //   dateFormatter(date) === "Monday, September 7, 2020"
-  // ) {
-  //   console.log(">>> date is either 2/15/21 or 9/7/20");
-  //   console.log(">>> isHoliday = " + isHoliday);
-  // }
   return isHoliday;
 }
 
@@ -138,45 +106,14 @@ function createFutureDatesArray(today, futureDateRules, holidays) {
         futureDate = null;
     }
 
-    //================================================
-    //          lOGGING
-    //================================================
-    // if (
-    //   dateFormatter(futureDate) === "Monday, February 15, 2021" ||
-    //   dateFormatter(futureDate) === "Monday, September 7, 2020"
-    // ) {
-    //   console.log(">>> futureDate = " + dateFormatter(futureDate));
-    //   console.log(
-    //     ">>> isDateHoliday(futureDate) = " + isDateHoliday(futureDate, holidays)
-    //   );
-    // }
-    //================================================
-    //          lOGGING
-    //================================================
-
     while (isDateHoliday(futureDate, holidays)) {
-      // console.log(">>> >>> inside isDateHoliday");
-      // console.log(
-      //   ">>> >>> futureDate before add = " + dateFormatter(futureDate)
-      // );
       futureDate = addDays(futureDate, 1);
-      // console.log(
-      //   ">>> >>> futureDate after add = " + dateFormatter(futureDate)
-      // );
-      // console.log(
-      //   ">>> >>> isDateHoliday(futureDate) = " +
-      //     isDateHoliday(futureDate, holidays)
-      // );
     }
-
-    // console.log(dateFormatter(futureDate));
 
     let newDate = {
       name: futureDateRules[i].name,
       date: dateFormatter(futureDate),
     };
-
-    // console.log(newDate);
 
     array.push(newDate);
   }
