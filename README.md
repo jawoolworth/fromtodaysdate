@@ -13,7 +13,7 @@ Bellow the current date will be a list of intervals with associated dates in the
     - For months where the calculated day is greater than days in the given month, the days in excess of the total days in the month will be added to the last day.
       - For example, calculating out one month from January 31 will result in March 3 in non-leap years, assuming March 3 falls on a work day.
 - Years
-  This will increment the year.
+  - This will increment the year.
 - Business Days
   This will only count business days to get to the desired date. Business days exclude weekends and holidays.
 
