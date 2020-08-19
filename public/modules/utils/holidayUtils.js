@@ -190,7 +190,6 @@ function adjustHolidayForWeekend(date) {
 
 function createHolidays(holidayRules, year) {
   const holidayDates = [];
-
   for (let i = 0; i < 4; i++) {
     for (let j = 0; j < holidayRules.length; j++) {
       holidayDates.push(createHoliday(holidayRules[j], year + i));
