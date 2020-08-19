@@ -245,4 +245,38 @@ describe("futureDateUtils tests", () => {
 
     expect(futureDateIsHoliday).toBe(false);
   });
+
+  test("createFutureDatesArray(weekRules): calculated date falls on holiday ", () => {
+    let today = new Date(2020, 7, 19); // 8/19/2020
+    let testHolidays = [
+      new Date(2020, 7, 26), // holiday 1 day from today, future date should be 8/27/2020
+    ];
+
+    let futureDates = createFutureDatesArray(today, weekRules, testHolidays);
+
+    expect(futureDates[0].date).toBe("Thursday, August 27, 2020");
+  });
+
+  test("createFutureDatesArray(weekRules): calculated date falls on friday holiday ", () => {
+    let today = new Date(2020, 7, 21); // 8/21/2020
+    let testHolidays = [
+      new Date(2020, 7, 28), // holiday 1 day from today, future date should be 8/31/2020
+    ];
+
+    let futureDates = createFutureDatesArray(today, weekRules, testHolidays);
+
+    expect(futureDates[0].date).toBe("Monday, August 31, 2020");
+  });
+
+  test("createFutureDatesArray(weekRules): calculated date falls on thursday holiday with a following Friday Holiday", () => {
+    let today = new Date(2020, 7, 20); // 8/21/2020
+    let testHolidays = [
+      new Date(2020, 7, 27), // holiday 1 day from today, future date should be 8/31/2020
+      new Date(2020, 7, 28),
+    ];
+
+    let futureDates = createFutureDatesArray(today, weekRules, testHolidays);
+
+    expect(futureDates[0].date).toBe("Monday, August 31, 2020");
+  });
 });
