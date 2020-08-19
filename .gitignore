@@ -1,6 +1,7 @@
 #exclude specific files
 play.js
 AlexanderCourtCalendar.txt
+setupjest.md
 
 # Logs
 logs
