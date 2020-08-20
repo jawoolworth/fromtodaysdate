@@ -100,7 +100,11 @@ function createFutureDatesArray(today, futureDateRules, holidays) {
         futureDate = addDays(today, futureDateRules[i].numberOfPeriods);
         break;
       case PERIOD.courtDays:
-        futureDate = addCourtDays(today, futureDateRules[i].numberOfPeriods);
+        futureDate = addCourtDays(
+          today,
+          futureDateRules[i].numberOfPeriods,
+          holidays
+        );
         break;
       default:
         futureDate = null;

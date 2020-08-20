@@ -25,7 +25,7 @@ const daysOfWeek = [
   "Saturday",
 ];
 
-function addCourtDays(date, days) {
+function addCourtDays(date, days, holidays) {
   let workingDays = 0;
   let calculatedDate = new Date(date);
   let month = date.getMonth();
@@ -37,7 +37,15 @@ function addCourtDays(date, days) {
     calculatedDate = new Date(year, month, day);
 
     if (calculatedDate.getDay() !== 0 && calculatedDate.getDay() !== 6) {
-      workingDays++;
+      let isHoliday = false;
+      holidays.forEach((holiday) => {
+        if (dateFormatter(calculatedDate) === dateFormatter(holiday)) {
+          isHoliday = true;
+        }
+      });
+      if (!isHoliday) {
+        workingDays++;
+      }
     }
   }
 
